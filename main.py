@@ -16,14 +16,15 @@ windows = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 windows.get('https://www.binance.com/en')
 while True:
     max_quantity = float(input('Maxima cantidad de compra: '))
-    max_price = float(input('Maximo precio: '))
+    min_quantity = float(input('Minima cantidad de compra: '))
+    max_price = float(input('Precio maximo de compra: '))
 
     sellers = []
     buy_class = Buy(windows)
     prices_class = Prices(windows)
     quantities_class = Quantities(windows)
     buttons_class = Buttons(windows)
-    search_seller_class = Search_seller(max_price, max_quantity)
+    search_seller_class = Search_seller(max_price, max_quantity, min_quantity)
     while True:
         try:
             prices = prices_class.get()
